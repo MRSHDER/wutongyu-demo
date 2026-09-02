@@ -14,6 +14,11 @@ export function ActivityInfo({ recommendation }: { recommendation: Recommendatio
       {activity.organizer && <div><dt>组织方</dt><dd>{activity.organizer}</dd></div>}
     </dl>
     <section><h2>活动介绍</h2><p>{activity.description}</p></section>
-    <section><h2>推荐理由</h2><p>{reasons.join(' ')}</p></section>
+    <section>
+      <h2>为什么推荐这个活动</h2>
+      <ul className="reason-list">
+        {reasons.map((reason) => <li key={reason}>{reason}</li>)}
+      </ul>
+    </section>
   </article>;
 }
