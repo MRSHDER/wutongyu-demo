@@ -22,8 +22,12 @@ export function MatchingPage() {
 
   const toggleTopic = (topic: TopicTag) => setTopics((current) => current.includes(topic) ? current.filter((item) => item !== topic) : [...current, topic]);
   const canContinue = step === 1 ? audience.length > 0 : step === 2 ? topics.length > 0 : timePreferences.length > 0;
-  const question = step === 1 ? '你是？' : step === 2 ? '你想参加什么？' : '什么时候方便？';
-  const hint = step === 2 ? '可选择多个感兴趣的主题' : '请选择最符合你目前情况的一项';
+  const question = step === 1 ? '谁来参加？' : step === 2 ? '想参加哪类活动？' : '什么时间方便？';
+  const hint = step === 1
+    ? '先选择最符合你的人群，便于匹配适合的公益文化活动'
+    : step === 2
+      ? '可多选便民、文化、亲子、健康等主题'
+      : '选一个你更方便的时段';
 
   return <PageShell compact>
     <header className="page-header">
@@ -34,13 +38,13 @@ export function MatchingPage() {
       </div>
     </header>
     <section className="matching-page">
-      <p className="eyebrow">快速匹配 · 第 {step} 步</p>
+      <p className="eyebrow">便民匹配 · 第 {step} 步</p>
       <h1>{question}</h1><p className="page-lead">{hint}</p>
       {step === 1 && <OptionGrid options={AUDIENCE_OPTIONS} selected={audience} onChange={(value) => setAudience([value])} />}
       {step === 2 && <OptionGrid options={TOPIC_OPTIONS} selected={topics} multiSelect onChange={toggleTopic} />}
       {step === 3 && <OptionGrid options={TIME_OPTIONS} selected={timePreferences} onChange={(value) => setTimePreferences([value])} />}
       <div className="page-actions">
-        <Button disabled={!canContinue} onClick={() => step < 3 ? setStep((current) => current + 1) : submitQuickMatch({ audience, topics, timePreferences })}>{step < 3 ? '下一步' : '查看推荐结果'}</Button>
+        <Button disabled={!canContinue} onClick={() => step < 3 ? setStep((current) => current + 1) : submitQuickMatch({ audience, topics, timePreferences })}>{step < 3 ? '下一步' : '查看推荐活动'}</Button>
       </div>
     </section>
   </PageShell>;
