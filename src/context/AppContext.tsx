@@ -17,6 +17,8 @@ interface AppContextValue extends AppState {
   submitQuickMatch: (criteria: MatchCriteria) => void;
   submitSearch: (query: string) => void;
   showActivity: (activityId: string) => void;
+  goHome: () => void;
+  rematch: () => void;
   restart: () => void;
 }
 
@@ -57,6 +59,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       });
     },
     showActivity: (activityId) => setState((current) => ({ ...current, route: 'detail', activeActivityId: activityId })),
+    goHome: () => setState(initialState),
+    rematch: () => setState({ ...initialState, route: 'matching' }),
     restart: () => setState(initialState),
   }), [state]);
 
