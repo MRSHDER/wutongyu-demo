@@ -1,0 +1,6 @@
+@media (max-width: 960px) {
+  .page-shell { min-height: 100dvh; padding: 32px; }
+  .home-page h1, .matching-page h1, .search-page h1, .results-page h1, .activity-detail h1 { font-size: clamp(2.1rem, 6vw, 4rem); }
+  .recommendation-grid { grid-template-columns: 1fr; }
+  .option-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

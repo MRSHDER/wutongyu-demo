@@ -1,0 +1,13 @@
+:root {
+  --ink: #17352f;
+  --muted: #526860;
+  --brand: #0f766e;
+  --brand-dark: #075f59;
+  --brand-pale: #e5f4ef;
+  --paper: #f8f7f2;
+  --panel: #ffffff;
+  --line: #d6e1db;
+  --focus: #ef9f32;
+  --shadow: 0 12px 30px rgb(20 62 51 / 10%);
+  font-family: "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+}
